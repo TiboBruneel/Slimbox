@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Slimbox - Dashboard</title>
+        <meta name="description" content="This is the Slimbox dashboard.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="msapplication-TileColor" content="#FF7700">
+        <meta name="theme-color" content="#FF7700">
+
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/screen.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+        <script src="scripts/dataHandler.js"></script>
+        <script src="scripts/app_index.js"></script>
+        <script src="https://cdnjs.com/libraries/Chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js" integrity="sha256-vyehT44mCOPZg7SbqfOZ0HNYXjPKgBCaqxBkW3lh6bg=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header class="o-row">
+            <div class="c-header">
+                <div class="c-header__logo">
+                    <h1 class="c-logo">
+                        <svg class="c-logo__symbol" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1644 830.41"><title>Logo_slimbox</title>
+                        <path d="M1522,584.8H478.05c-165.71,0-300,134.33-300,300v230.32c0,165.71,134.34,
+                        300,300.05,300H1522c165.71,0,300-134.33,300-300V884.84C1822,719.13,1687.66,584.8,
+                        1522,584.8ZM658.56,1271.11c-149.73,0-271.12-121.38-271.12-271.11S508.83,728.89,
+                        658.56,728.89,929.67,850.27,929.67,1000,808.29,1271.11,658.56,
+                        1271.11Zm773.22-97.78A173.33,173.33,0,1,1,1605.11,1000,173.34,173.34,0,0,1,1431.78,1173.33Z"
+                        transform="translate(-178 -584.8)"/><circle cx="1431.78" cy="1000" r="126.6"
+                        transform="translate(-465.75 720.52) rotate(-45)"/></svg>
+                        <span class="c-logo__text">Slimbox</span>
+                    </h1>
+                </div>
+
+                <div class="c-header__nav">
+                    <nav class="c-nav">
+                        <ul class="o-list c-nav__list">
+                            <li class="c-nav__item"><a href="index.html" class="c-nav__link c-nav__active">Dashboard</a></li>
+                            <li class="c-nav__item"><a href="settings.html" class="c-nav__link">Settings</a></li>
+                            <li class="c-nav__item"><a href="about.html" class="c-nav__link">About</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <h1 class="c-page__title o-layout--justify-center">Dashboard</h1>
+
+        <section class="o-row o-row--lg">
+            <div class="o-container">
+                <div class="o-section o-section--lg">
+                    <div class="o-layout o-layout--gutter-lg o-layout--align-center">
+                        <div class="o-layout__item u-2-of-3-bp3">
+                            <div class="c-cp">
+                                <div class="c-progress-circle" data-percentage="100">
+                                    <svg class="c-progress-circle__svg">
+                                        <circle class="c-progress-circle__stroke" r="50%" cx="50%" cy="50%"></circle>
+                                        <circle class="c-progress-circle__stroke" r="50%" cx="50%" cy="50%"></circle>
+                                    </svg>
+                                    <div class="c-progress-info">
+                                        <h1 class="c-progress-percentage">100%</h1>
+                                        <!-- <h2 class="c-progress-volume">Volume</h2> -->
+                                    </div>
+                                </div>
+                                <div class="c-cp__info">
+                                    <div class="c-cp__status">
+                                        <h2 class="c-cp__head">Current status</h2>
+                                        <h3 class="c-cp__info">Playing</h3>
+                                    </div>
+                                    <div class="c-cp__colorpart">
+                                        <h2 class="c-cp__head">Current color</h2>
+                                        <h3 class="c-cp__info c-cp__color">Red</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o-layout__item u-1-of-3-bp3">
+                            <div class="c-ti">
+                                <div class="c-part__info">
+                                    <h2 class="c-ti__title">Temperature inside</h2>
+                                    <div class="c-ti__tempinfo">
+                                        <h1 class="c-ti__temperature"></h1>
+                                    </div>
+                                    <h3 class="c-ti__unit">
+                                        <span class="c-ti__degrees" id="c-ti__degrees" style="opacity: 1">°C</span>
+                                        |
+                                        <span class="c-ti__fahrenheit" id="c-ti__fahrenheit" style="opacity: 0.2">F</span></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="o-container">
+                <div class="o-section o-section--lg">
+                    <div class="o-layout o-layout--gutter-lg o-layout--align-center">
+                        <div class="o-layout__item u-mt-xl u-2-of-3-bp3 c-tho">
+                            <div class="c-th">
+                                <div class="c-part__info">
+                                    <h2 class="c-th__title">Temperature history</h2>
+                                    <canvas id="myChart" width="600" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o-layout__item u-mt-xl u-1-of-3-bp3">
+                            <div class="c-to u-mb-xl">
+                                <div class="c-part__info">
+                                    <h2 class="c-to__title">Temperature outside<br></h2>
+                                    <div class="c-to__tempinfo">
+                                        <!-- <h1 class="c-to__temperature">21,5</h1> -->
+                                    </div>
+                                    <h3 class="c-to__unit">
+                                        <span class="c-to__degrees" id="c-to__degrees" style="opacity: 1">°C</span>
+                                        |
+                                        <span class="c-to__fahrenheit" id="c-to__fahrenheit" style="opacity: 0.2">F</span>
+                                </div>
+                            </div>
+
+                            <div class="c-wo">
+                                <div class="c-part__info">
+                                    <h2 class="c-wo__title">Weather outside<br></h2>
+                                    <div class="c-wo__info">
+                                        <h1 class="c-wo__status">Sunny</h1>
+                                        <h3 class="c-wo__detailed">
+                                            <span class="c-wo__pressure c-wo__detail">Pressure: 0%</span><br>
+                                            <span class="c-wo__humidity c-wo__detail">Humidity: 62%</span><br>
+                                            <span class="c-wo__wind c-wo__detail">Wind: 31km/h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </body>
+</html>

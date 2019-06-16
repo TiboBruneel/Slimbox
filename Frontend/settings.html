@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Slimbox - Dashboard</title>
+        <meta name="description" content="This is the Slimbox dashboard.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="msapplication-TileColor" content="#FF7700">
+        <meta name="theme-color" content="#FF7700">
+
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/screen.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+        <script src="scripts/dataHandler.js"></script>
+        <script src="scripts/app_settings.js"></script>
+    </head>
+    <body>
+        <header class="o-row">
+            <div class="c-header">
+                <div class="c-header__logo">
+                    <h1 class="c-logo">
+                        <svg class="c-logo__symbol" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1644 830.41"><title>Logo_slimbox</title>
+                        <path d="M1522,584.8H478.05c-165.71,0-300,134.33-300,300v230.32c0,165.71,134.34,
+                        300,300.05,300H1522c165.71,0,300-134.33,300-300V884.84C1822,719.13,1687.66,584.8,
+                        1522,584.8ZM658.56,1271.11c-149.73,0-271.12-121.38-271.12-271.11S508.83,728.89,
+                        658.56,728.89,929.67,850.27,929.67,1000,808.29,1271.11,658.56,
+                        1271.11Zm773.22-97.78A173.33,173.33,0,1,1,1605.11,1000,173.34,173.34,0,0,1,1431.78,1173.33Z"
+                        transform="translate(-178 -584.8)"/><circle cx="1431.78" cy="1000" r="126.6"
+                        transform="translate(-465.75 720.52) rotate(-45)"/></svg>
+                        <span class="c-logo__text">Slimbox</span>
+                    </h1>
+                </div>
+
+                <div class="c-header__nav">
+                    <nav class="c-nav">
+                        <ul class="o-list c-nav__list">
+                            <li class="c-nav__item"><a href="index.html" class="c-nav__link">Dashboard</a></li>
+                            <li class="c-nav__item"><a href="settings.html" class="c-nav__link c-nav__active">Settings</a></li>
+                            <li class="c-nav__item"><a href="about.html" class="c-nav__link">About</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <h1 class="c-page__title o-layout--justify-center">Settings</h1>
+
+        <section class="o-row o-row--lg">
+            <div class="o-container">
+                <div class="o-section o-section--lg">
+                    <div class="o-layout o-layout--gutter-lg o-layout--align-center">
+                        <div class="o-layout__item u-2-of-3-bp3">
+                            <div class="c-ls u-mb-xl">
+                                <div class="c-settings__info">
+                                    <h2 class="c-ls__title">Location Settings</h2>
+                                    <h3 class="c-ls__action">Change location</h3>
+                                    <input class="c-location__input" type="text" name="location">
+                                    <input class="c-submit c-location__button" type=button value="Save">
+                                </div>
+                            </div>
+
+                            <div class="c-cs">
+                                <div class="c-settings__info">
+                                    <h2 class="c-cs__title">Colorwheel Settings</h2>
+                                    <h3 class="c-cs__status">Current color:</h3>
+                                    <div class="c-cs__content">
+                                        <button class="c-button__color c-button__red" id="c-button__red" title="Red"></button>
+                                        <button class="c-button__color c-button__orange" id="c-button__orange" title="Orange"></button>
+                                        <button class="c-button__color c-button__yellow" id="c-button__yellow" title="Yellow"></button>
+                                        <button class="c-button__color c-button__green" id="c-button__green" title="Green"></button>
+                                        <button class="c-button__color c-button__blue" id="c-button__blue" title="Blue"></button>
+                                        <button class="c-button__color c-button__purple" id="c-button__purple" title="Purple"></button>
+                                        <button class="c-button__color c-button__white" id="c-button__white" title="White"></button>
+                                        <button class="c-button__color c-button__rainbow" id="c-button__rainbow" title="Rainbow"></button>
+                                        <button class="c-button__color c-button__none" id="c-button__none" title="None"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o-layout__item u-1-of-3-bp3">
+                            <div class="c-ar">
+                                <div class="c-settings__info">
+                                    <h2 class="c-ar__title">References</h2>
+                                    <h3 class="c-ar__head">Weather API</h3>
+                                    <a class="c-ar__link" href="https://openweathermap.org/api">https://openweathermap.org/api/</a>
+                                    <h3 class="c-ar__head">Chart.js</h3>
+                                    <a class="c-ar__link" href="https://www.chartjs.org/">https://www.chartjs.org/</a>
+                                    <h3 class="c-ar__head">Special thanks to</h3>
+                                    <h4 class="c-ar__link">Tim Braet</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
